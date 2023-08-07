@@ -1,32 +1,20 @@
-<%= form_with(model: source_page) do |form| %>
-  <% if source_page.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(source_page.errors.count, "error") %> prohibited this source_page from being saved:</h2>
-
-      <ul>
-        <% source_page.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form.label :name, style: "display: block" %>
+<%= form_with model: [ @source, @source_page ] do |form| %>
+  <p>
+    <%= form.label :name %><br>
     <%= form.text_field :name %>
-  </div>
+    <% @source_page.errors.full_messages_for(:name).each do |message| %>
+        <div class="text-danger"><%= message %></div>
+    <% end %>
+  </p>
+  <p>
+    <%= form.label :url %><br>
+    <%= form.text_area :url %>
+    <% @source_page.errors.full_messages_for(:url).each do |message| %>
+        <div class="text-danger"><%= message %></div>
+    <% end %>
+  </p>
 
-  <div>
-    <%= form.label :url, style: "display: block" %>
-    <%= form.text_field :url %>
-  </div>
-
-  <div>
-    <%= form.label :source_id, style: "display: block" %>
-    <%= form.text_field :source_id %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
+  <p>
+    <button type="submit" class="btn btn-success" style="margin-top: 20px;">Submit</button>
+  </p>
 <% end %>
