@@ -1,0 +1,69 @@
+version: "3"
+
+services:
+  db:
+    image: postgres:13.1
+    env_file:
+      - environment.env
+    restart: always
+    ports:
+      - "5433:5432"
+    healthcheck:
+      test: "exit 0"
+    volumes:
+      - postgres:/var/lib/postgresql
+
+  redis:
+    image: redis
+    restart: always
+  
+  # elasticsearch:
+  #   image: elasticsearch:8.3.1
+  #   restart: on-failure
+  #   environment:
+  #     - xpack.security.enabled=false
+  #     - discovery.type=single-node
+  #   volumes:
+  #     - elasticsearch:/usr/share/elasticsearch/data
+  #   ports:
+  #     - "9200:9200"
+  #     - "9300:9300"
+  #   deploy:
+  #     resources:
+  #       limits:
+  #         cpus: '0.5'
+  #         memory: 800M
+  #       reservations:
+  #         memory: 300M
+  
+  backend:
+    image: sa3dawy-backend
+    build: .
+    entrypoint: /app/entrypoint.sh
+    ports:
+      - "6060:3000"
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+      - redis
+    env_file:
+      - environment.env
+    restart: always
+
+  sidekiq:
+    image: sa3dawy-backend
+    command: 'bundle exec sidekiq'
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+      - redis
+      - backend
+    env_file:
+      - environment.env
+    restart: always
+
+volumes:
+  postgres:
+  bundle_path:
