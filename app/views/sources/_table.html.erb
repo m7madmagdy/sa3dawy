@@ -1,0 +1,28 @@
+<table class="table table-bordered">
+  <thead class="table-light">
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Name</th>
+    <th scope="col">Url</th>
+    <th scope="col">Products Count</th>
+    <th scope="col">Actions</th>
+  </tr>
+  </thead>
+  <tbody class="table">
+  <% @sources.each do |source| %>
+    <tr>
+      <th><%= source.id %></th>
+      <td><%= source.name %></td>
+      <td><%= link_to source.url, source.url %></td>
+      <td><%= source.source_pages.sum {|sp| sp.products.count } %></td>
+      <td>
+        <div class="btn-group">
+          <%= link_to "Edit Source", edit_source_path(source), class: 'btn btn-outline-success btn-sm', style: "margin: 1px 10px 1px 10px;" %>
+          <%= link_to "Add Source Page", new_source_source_page_path(source), class: 'btn btn-outline-success btn-sm', style: "margin: 1px 10px 1px 10px;" %>
+          <%= link_to "Show Source Pages", source_source_pages_path(source), class: 'btn btn-outline-dark btn-sm',style: "margin: 1px 1px 1px 1px;" %>
+        </div>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

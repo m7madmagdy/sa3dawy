@@ -13,10 +13,12 @@ class SourcesController < ApplicationController
   # GET /sources/new
   def new
     @source = Source.new
+    @source.build_source_config
   end
 
   # GET /sources/1/edit
   def edit
+    @source.build_source_config
   end
 
   # POST /sources or /sources.json
@@ -65,6 +67,7 @@ class SourcesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def source_params
-      params.require(:source).permit(:name, :url)
+      params.require(:source).permit(:name, :url, source_config_attributes:
+        %i[name_selector price_selector image_url_selector description_selector products_url_selector])
     end
 end

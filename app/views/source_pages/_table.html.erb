@@ -1,0 +1,32 @@
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Name</th>
+    <th scope="col">Url</th>
+    <th scope="col">Products Count</th>
+    <th scope="col">Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @source_pages.each do |source_page| %>
+    <tr>
+      <th><%= source_page.id %></th>
+      <td><%= source_page.name %></td>
+      <td><%= link_to source_page.url, source_page.url %></td>
+      <td><%= source_page.products.count %></td>
+      <td>
+        <div class="btn-group">
+            <a href=<%= edit_source_source_page_path(@source, source_page) %> style="text-decoration:none; margin: 1px 10px 1px 10px;">
+              <input class="btn btn-outline-success btn-sm" type="button" value="Edit">
+            </a>
+            <%= button_to 'Delete', source_source_page_path(@source, source_page), class: 'btn btn-outline-danger btn-sm', style: "margin: 1px 10px 1px 10px;" ,method: :delete %>
+        </div>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+
+

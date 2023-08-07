@@ -1,9 +1,5 @@
-<h1>New source page</h1>
-
-<%= render "form", source_page: @source_page %>
-
-<br>
-
 <div>
-  <%= link_to "Back to source pages", source_pages_path %>
+  <h2>New Source Page for <%= @source.name %> </h2>
+
+  <%= render partial: "form", source: @source_page %>
 </div>
