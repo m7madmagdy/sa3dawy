@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  root 'sources#index'
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :sources do
+    resources :source_pages
+  end
+
+  resources :products, except: %i[new create]
 end
