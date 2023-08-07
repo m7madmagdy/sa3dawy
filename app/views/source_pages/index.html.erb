@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Source pages</h1>
+
+<div id="source_pages">
+  <% @source_pages.each do |source_page| %>
+    <%= render source_page %>
+    <p>
+      <%= link_to "Show this source page", source_page %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New source page", new_source_page_path %>

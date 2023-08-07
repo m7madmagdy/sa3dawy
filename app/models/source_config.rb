@@ -1,0 +1,2 @@
+class SourceConfig < ApplicationRecord
+end
