@@ -5,7 +5,7 @@ class Source < ApplicationRecord
   validates :url, presence: true, uniqueness: true, format: { with: URL_REGEXP }
 
   has_many :source_pages, dependent: :destroy
-  has_many :products, through: :source_pages
+  has_many :products, dependent: :destroy
 
   has_one :source_config
   accepts_nested_attributes_for :source_config, allow_destroy: true, update_only: true
