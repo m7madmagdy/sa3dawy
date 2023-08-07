@@ -1,24 +1,26 @@
-# README
+# Sa3dawy Backend
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**Dependencies**
 
-Things you may want to cover:
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+- [Ruby](https://github.com/ruby/ruby)
+- [Rails](https://github.com/rails/rails)
+- [Posgres](https://www.postgresql.org/about/news/postgresql-13-released-2077/)
 
-* Ruby version
+### Install Docker and DockerCompose
 
-* System dependencies
+### Setup Environment
 
-* Configuration
 
-* Database creation
+#### since we have a makefile
 
-* Database initialization
+- up and run dependencies
+```sh
+$ make up
+```
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- start rails console
+```sh
+$ make console
+```
