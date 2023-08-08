@@ -12,15 +12,14 @@
 
 ### Setup Environment
 
+#### Since we have a makefile
 
-#### since we have a makefile
-
-- up and run dependencies
+- build and start server
 ```sh
-$ make up
+make build && make up
 ```
 
 - start rails console
 ```sh
-$ make console
+make console
 ```
