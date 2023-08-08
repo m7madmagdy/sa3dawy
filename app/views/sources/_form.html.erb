@@ -1,6 +1,6 @@
 <%= form_with model: @source do |form| %>
   <div>
-    <%= form.label :name %><br>
+    <%= form.label :name, class: "text-light" %><br>
       <%= form.text_field :name %>
         <% @source.errors.full_messages_for(:name).each do |message| %>
           <div class="text-danger">
@@ -11,7 +11,7 @@
 
   <br>
   <div>
-    <%= form.label :url %><br>
+    <%= form.label :url, class: "text-light" %><br>
       <%= form.text_field :url %>
         <% @source.errors.full_messages_for(:url).each do |message| %>
           <div class="text-danger">
@@ -22,25 +22,25 @@
 
   <br>
   <div style="margin-top: 20px;">
-    <h2>Source Config</h2>
+    <h2 class="text-light">Source Config</h2>
   </div>
 
   <div>
     <%= form.fields_for :source_config do |source_config| %>
       <div>
-        <%= source_config.label :name_selector %><br>
+        <%= source_config.label :name_selector, class: "text-light" %><br>
         <%= source_config.text_field :name_selector %>
       </div>
       <div>
-        <%= source_config.label :description_selector %><br>
+        <%= source_config.label :description_selector, class: "text-light" %><br>
         <%= source_config.text_field :description_selector %>
       </div>
       <div>
-        <%= source_config.label :image_url_selector %><br>
+        <%= source_config.label :image_url_selector, class: "text-light" %><br>
         <%= source_config.text_field :image_url_selector %>
       </div>
       <div>
-        <%= source_config.label :products_url_selector %><br>
+        <%= source_config.label :products_url_selector, class: "text-light" %><br>
         <%= source_config.text_field :products_url_selector %>
       </div>
       <% end %>

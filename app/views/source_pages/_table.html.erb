@@ -1,4 +1,4 @@
-<table class="table table-bordered">
+<table class="table table-bordered table-dark">
   <thead>
   <tr>
     <th scope="col">#</th>
@@ -18,9 +18,9 @@
       <td>
         <div class="btn-group">
             <a href=<%= edit_source_source_page_path(@source, source_page) %> style="text-decoration:none; margin: 1px 10px 1px 10px;">
-              <input class="btn btn-outline-success btn-sm" type="button" value="Edit">
+              <input class="btn btn-outline-success" type="button" value="Edit">
             </a>
-            <%= button_to 'Delete', source_source_page_path(@source, source_page), class: 'btn btn-outline-danger btn-sm', style: "margin: 1px 10px 1px 10px;" ,method: :delete %>
+            <%= button_to 'Delete', source_source_page_path(@source, source_page), class: 'btn btn-outline-danger', style: "margin: 1px 10px 1px 10px;" ,method: :delete %>
         </div>
       </td>
     </tr>

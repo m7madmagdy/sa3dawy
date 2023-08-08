@@ -1,20 +1,21 @@
-<%= form_with model: [ @source, @source_page ] do |form| %>
-  <p>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
+<div>
+  <%= form_with model: [ @source, @source_page ] do |form| %>
+  <p class="col-3">
+    <%= form.label :name, class: "text-light" %><br>
+    <%= form.text_field :name, class: "form-control" %>
     <% @source_page.errors.full_messages_for(:name).each do |message| %>
         <div class="text-danger"><%= message %></div>
     <% end %>
   </p>
-  <p>
-    <%= form.label :url %><br>
-    <%= form.text_area :url %>
+  <p class="col-4">
+    <%= form.label :url, class: "text-light" %><br>
+    <%= form.text_area :url, class: "form-control" %>
     <% @source_page.errors.full_messages_for(:url).each do |message| %>
         <div class="text-danger"><%= message %></div>
     <% end %>
   </p>
-
   <p>
-    <button type="submit" class="btn btn-success" style="margin-top: 20px;">Submit</button>
+    <button type="submit" class="btn btn-success col-4" style="margin: 14px;">Submit</button>
   </p>
 <% end %>
+</div>

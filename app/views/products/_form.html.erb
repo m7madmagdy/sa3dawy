@@ -12,36 +12,37 @@
   <% end %>
 
   <div>
-    <%= form.label :name, style: "display: block" %>
+    <%= form.label :name, style: "display: block", class: "text-light" %>
     <%= form.text_field :name %>
   </div>
 
   <div>
-    <%= form.label :price, style: "display: block" %>
+    <%= form.label :price, style: "display: block", class: "text-light" %>
     <%= form.text_field :price %>
   </div>
 
   <div>
-    <%= form.label :url, style: "display: block" %>
+    <%= form.label :url, style: "display: block", class: "text-light" %>
     <%= form.text_field :url %>
   </div>
 
   <div>
-    <%= form.label :image_url, style: "display: block" %>
+    <%= form.label :image_url, style: "display: block", class: "text-light" %>
     <%= form.text_field :image_url %>
   </div>
 
   <div>
-    <%= form.label :description, style: "display: block" %>
+    <%= form.label :description, style: "display: block", class: "text-light" %>
     <%= form.text_area :description %>
   </div>
 
   <div>
-    <%= form.label :source_page_id, style: "display: block" %>
+    <%= form.label :source_page_id, style: "display: block", class: "text-light" %>
     <%= form.text_field :source_page_id %>
   </div>
 
+  <br>
   <div>
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-success col-2" %>
   </div>
 <% end %>

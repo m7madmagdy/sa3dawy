@@ -1,18 +1,20 @@
-<div>
-  <h1><%= @product.name %></h1>
-  <p><%= @product.description %></p>
-  <div><strong>Price:</strong> <%= "#{@product.price} EGP" %></p>
+<div class="text-center">
+  <h1 class="text-light"><%= @product.name %></h1>
+  <p class="text-light col-2 mx-auto">
+    <%= @product.description %>
+  </p>
+  <p class="text-light"><strong>Price:</strong><span class="text-primary"><%= " #{@product.price} EGP" %></span></p>
 
-  <div>
-    <% unless @product.image_url.nil? %>
-      <% image_urls = @product.image_url.split(',') %>
-      <% image_urls.each do |image_url| %>
-        <%= image_tag(image_url.strip, class: "rounded", style: "width: 250px; height: 250px; object-fit: cover;", loading: "lazy") %>
-      <% end %>
+  <% unless @product.image_url.nil? %>
+    <% image_urls = @product.image_url.split(',') %>
+    <% image_urls.each_slice(3) do |image_slice| %>
+      <div class="row d-flex justify-content-center">
+        <% image_slice.each do |image_url| %>
+          <div>
+            <%= image_tag(image_url.strip, class: "img-fluid rounded", style: "width: 300px; height: 280px; object-fit: cover; margin: 4px;", loading: "lazy") %>
+          </div>
+        <% end %>
+      </div>
     <% end %>
-  </div>
-  <hr>
-
-  <%= link_to 'Edit this product', edit_product_path(@product), class: 'btn btn-outline-success' %>
-  <%= link_to 'Back to products', products_path, class: 'btn btn-outline-primary' %>
+  <% end %>
 </div>
