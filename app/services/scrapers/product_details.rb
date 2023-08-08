@@ -29,8 +29,7 @@ module Scrapers
     def fetch_price
       price = fetch_description
 
-      price = price.scan(/Price:\s*([\d,.]+)\s*(EGP)?/).flatten
-      price.first
+      price.scan(/Price\s*:\s*([\d,.]+)/).flatten.first
     end
 
     def fetch_images
