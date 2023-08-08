@@ -16,4 +16,8 @@ class Product < ApplicationRecord
     image_url = self.image_url.split(',')
     image_url.first
   end
+
+  def enqueue_scraper_job
+    ProductDetailsJob.perform_async(id)
+  end
 end

@@ -1,0 +1,4 @@
+products:
+  cron: '0 */12 * * *' # At minute 0 past every 12th hour
+  class: "ProductsCheckJob"
+  queue: default

@@ -1,0 +1,8 @@
+queues:
+  - default
+  - product_details_scraper
+
+:limits:
+  default: 2
+  product_details_scraper: 4
+
