@@ -1,6 +1,6 @@
 module Scrapers
   class ProductDetails
-    URL_REGEXP = %r{\A(http|https)://[a-z0-9]+([\-.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(/.*)?\z}ix
+    URL_REGEXP = %r{\A(http|https)://[a-z0-9]+([-.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(/.*)?\z}ix
 
     attr_reader :product
 
@@ -15,9 +15,9 @@ module Scrapers
       @document = fetch_document
       name = fetch_title
       price = fetch_price
-      image_url = fetch_image
+      image_url = fetch_images
       description = fetch_description
-      product_details = { name: name, description: description, price: price, image_url: image_url}
+      product_details = { name: name, description: description, price: price, image_url: image_url }
 
       Products::Update.call(@product.id, product_details)
     end
@@ -33,14 +33,21 @@ module Scrapers
       price.first
     end
 
-    def fetch_image
-      image_selector = @document.at(@source_config.image_url_selector)
+    def fetch_images
+      image_selectors = @document.css(@source_config.image_url_selector)
+      image_urls = []
 
-      if image_selector
-        style_attr = image_selector['style']
+      image_selectors.each do |selector|
+        style_attr = selector['style']
+
+        next unless style_attr
+
         url_match = style_attr.match(/url\('([^']+)'\)/)
-        url_match[1]
+        image_url = url_match[1] if url_match
+        image_urls << image_url if image_url
       end
+
+      image_urls.join(',')
     end
 
     def fetch_description
