@@ -14,21 +14,21 @@
   <% @products.each do |product| %>
     <tr>
       <th><%= product.id %></th>
-      <th><%= product.name %></th>
-      <td><%= link_to "Product page", product.url %></td>
-      <td><%="#{product.price} EGP"%></td>
-      <td>
+      <th class="col-2"><%= product.name %></th>
+      <td class="col-1"><%= link_to "Product page", product.url %></td>
+      <td class="col-1"><%="#{product.price} EGP"%></td>
+      <td class="col-2">
         <details>
-          <summary style="background-color: #202429; border-radius: 4px; padding: 6px;">Full Description</summary>
+          <summary style="background-color: #202429; border-radius: 6px; padding: 6px;">Full description</summary>
           <br>
           <p><%= product.description %></p>
         </details>
       </td>
-      <td>
+      <td class="col-2">
         <% unless product.image_url.nil? %>
           <% image_urls = product.image_url.split(',') %>
           <% first_image_url = image_urls.first.strip %>
-          <%= image_tag(first_image_url, class: "rounded", style: "width: 100%; height: 160px; object-fit: cover;", loading: "lazy") %>
+          <%= image_tag(first_image_url, class: "rounded", style: " width: 100%; height: 160px; object-fit: cover;", loading: "lazy") %>
         <% end %>
       </td>
        <td>
