@@ -1,13 +1,9 @@
 class SourcesController < ApplicationController
-  before_action :set_source, only: %i[ show edit update destroy ]
+  before_action :set_source, only: %i[ edit update destroy ]
 
   # GET /sources or /sources.json
   def index
     @sources = Source.all
-  end
-
-  # GET /sources/1 or /sources/1.json
-  def show
   end
 
   # GET /sources/new
@@ -26,8 +22,8 @@ class SourcesController < ApplicationController
 
     respond_to do |format|
       if @source.save
-        format.html { redirect_to source_url(@source), notice: "Source was successfully created." }
-        format.json { render :show, status: :created, location: @source }
+        format.html { redirect_to sources_path, notice: "Source was successfully created." }
+        format.json { render :index, status: :created, location: @source }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @source.errors, status: :unprocessable_entity }
@@ -39,8 +35,8 @@ class SourcesController < ApplicationController
   def update
     respond_to do |format|
       if @source.update(source_params)
-        format.html { redirect_to source_url(@source), notice: "Source was successfully updated." }
-        format.json { render :show, status: :ok, location: @source }
+        format.html { redirect_to sources_path, notice: "Source was successfully updated." }
+        format.json { render :index, status: :ok, location: @source }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @source.errors, status: :unprocessable_entity }
@@ -67,6 +63,6 @@ class SourcesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def source_params
       params.require(:source).permit(:name, :url, source_config_attributes:
-        %i[name_selector price_selector image_url_selector description_selector products_url_selector])
+        %i[name_selector image_url_selector description_selector products_url_selector])
     end
 end

@@ -1,0 +1,18 @@
+
+Source:
+    name: "Motorcycle",
+    url: "https://sa3dawy.com/motorcycles"
+
+Source Config: 
+    name_selector: "._text_1l2wf_30 h2",
+    product_prices_selector: "div._itemInfo_14luk_48 p:contains(\"PRICE\")",
+    description_selector: "._text_1l2wf_30 p",
+    product_urls_selector: ".btn._btnread_14luk_103.btn",
+
+
+Source Pages: 
+    name: "SPORTS BIKES",
+    url: "https://sa3dawy.com/sports-bikes",
+
+    name: "NAKED BIKES",
+    url: "https://sa3dawy.com/naked-&-street-bikes",
