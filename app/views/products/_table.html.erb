@@ -18,7 +18,11 @@
       <td><%= product.description %></td>
       <td><%= link_to "Product URL", product.url %></td>
       <td>
-          <%= image_tag(product.image_url, class: "rounded", style: "width: 200px; height: 200px; object-fit: cover;", loading: "lazy" ) unless product.image_url.nil?%>
+        <% unless product.image_url.nil? %>
+          <% image_urls = product.image_url.split(',') %>
+          <% first_image_url = image_urls.first.strip %>
+          <%= image_tag(first_image_url, class: "rounded", style: "width: 200px; height: 200px; object-fit: cover;", loading: "lazy") %>
+        <% end %>
       </td>
       <td><%= "#{product.price} EGP" %></td>
        <td>

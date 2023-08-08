@@ -1,0 +1,18 @@
+<div>
+  <h1><%= @product.name %></h1>
+  <p><%= @product.description %></p>
+  <div><strong>Price:</strong> <%= "#{@product.price} EGP" %></p>
+
+  <div>
+    <% unless @product.image_url.nil? %>
+      <% image_urls = @product.image_url.split(',') %>
+      <% image_urls.each do |image_url| %>
+        <%= image_tag(image_url.strip, class: "rounded", style: "width: 250px; height: 250px; object-fit: cover;", loading: "lazy") %>
+      <% end %>
+    <% end %>
+  </div>
+  <hr>
+
+  <%= link_to 'Edit this product', edit_product_path(@product), class: 'btn btn-outline-success' %>
+  <%= link_to 'Back to products', products_path, class: 'btn btn-outline-primary' %>
+</div>

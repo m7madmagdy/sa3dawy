@@ -11,4 +11,9 @@ class Product < ApplicationRecord
     price = self.price.to_f
     "#{format('%.3f', price).gsub('.', ',')} EGP"
   end
+
+  def product_image
+    image_url = self.image_url.split(',')
+    image_url.first
+  end
 end
