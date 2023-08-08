@@ -18,7 +18,6 @@ class SourcesController < ApplicationController
 
   # GET /sources/1/edit
   def edit
-    @source.build_source_config
   end
 
   # POST /sources or /sources.json

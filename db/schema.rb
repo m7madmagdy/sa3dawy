@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_07_140205) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_07_155141) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,6 +23,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_07_140205) do
     t.bigint "source_page_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "source_id", null: false
+    t.index ["source_id"], name: "index_products_on_source_id"
     t.index ["source_page_id"], name: "index_products_on_source_page_id"
   end
 
@@ -55,6 +57,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_07_140205) do
   end
 
   add_foreign_key "products", "source_pages"
+  add_foreign_key "products", "sources"
   add_foreign_key "source_configs", "sources"
   add_foreign_key "source_pages", "sources"
 end
