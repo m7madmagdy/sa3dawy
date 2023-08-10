@@ -24,11 +24,11 @@
           <p><%= product.description %></p>
         </details>
       </td>
-      <td class="col-2">
+      <td class="col-1">
         <% unless product.image_url.nil? %>
           <% image_urls = product.image_url.split(',') %>
           <% first_image_url = image_urls.first.strip %>
-          <%= image_tag(first_image_url, class: "rounded", style: " width: 100%; height: 180px; object-fit: cover;", loading: "lazy") %>
+          <%= image_tag(first_image_url, :size => '300x300', class: "rounded", style: " object-fit: cover;", loading: "lazy") %>
         <% end %>
       </td>
        <td class="col-1">
