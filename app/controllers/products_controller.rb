@@ -60,6 +60,6 @@ class ProductsController < ApplicationController
   end
 
   def cache_response
-    REDIS_CLIENT.setex(CACHE_KEY, 1.minutes, response.body)
+    REDIS_CLIENT.setex(CACHE_KEY, 3.houres, response.body)
   end
 end
